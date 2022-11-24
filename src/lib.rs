@@ -18,8 +18,8 @@ pub trait Context<T, E> {
         C: Display + Send + Sync + 'static,
         F: FnOnce() -> C;
 
-    /// like google map red dot, only record the location info without any context message.
-    fn dot(self) -> Result<T>;
+    /// Track caller location.
+    fn track(self) -> Result<T>;
 }
 
 impl<T, E> Context<T, E> for Result<T, E>
@@ -67,7 +67,7 @@ where
 
     #[inline]
     #[track_caller]
-    fn dot(self) -> Result<T> {
+    fn track(self) -> Result<T> {
         let caller = Location::caller();
         anyhow::Context::context(
             self,
@@ -125,7 +125,7 @@ where
 
     #[inline]
     #[track_caller]
-    fn dot(self) -> Result<T> {
+    fn track(self) -> Result<T> {
         let caller = Location::caller();
         anyhow::Context::context(
             self,
