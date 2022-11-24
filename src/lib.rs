@@ -37,7 +37,7 @@ where
         anyhow::Context::context(
             self,
             format!(
-                "{} at `{}@{}:{}`",
+                "{} at `{}:{}:{}`",
                 context,
                 caller.file(),
                 caller.line(),
@@ -56,7 +56,7 @@ where
         let caller = Location::caller();
         anyhow::Context::with_context(self, || {
             format!(
-                "{} at `{}@{}:{}`",
+                "{} at `{}:{}:{}`",
                 context(),
                 caller.file(),
                 caller.line(),
@@ -72,7 +72,7 @@ where
         anyhow::Context::context(
             self,
             format!(
-                "at `{}@{}:{}`",
+                "at `{}:{}:{}`",
                 caller.file(),
                 caller.line(),
                 caller.column()
@@ -95,7 +95,7 @@ where
         anyhow::Context::context(
             self,
             format!(
-                "{} at `{}@{}:{}`",
+                "{} at `{}:{}:{}`",
                 context,
                 caller.file(),
                 caller.line(),
@@ -114,7 +114,7 @@ where
         let caller = Location::caller();
         anyhow::Context::with_context(self, || {
             format!(
-                "{} at `{}@{}:{}`",
+                "{} at `{}:{}:{}`",
                 context(),
                 caller.file(),
                 caller.line(),
@@ -130,7 +130,7 @@ where
         anyhow::Context::context(
             self,
             format!(
-                "at `{}@{}:{}`",
+                "at `{}:{}:{}`",
                 caller.file(),
                 caller.line(),
                 caller.column()
